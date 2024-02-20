@@ -17,6 +17,12 @@
         <img class="mb-3 img-fluid" id="item-image">
         <h1 class="mb-3">Name: <span id="item-name"></span></h1>
         <p class="mb-3">Price: <span id="item-price"></span></p>
+        <!-- 추가 과제: 인증 붙이기 -->
+        <div class="mb-3">
+          <label for="bearer-input">Bearer Token</label>
+          <input type="text" class="form-control" id="bearer-input" value="No Token">
+        </div>
+
         <a href="/static/items.html">목록으로</a>
       </div>
     </div>
@@ -63,6 +69,7 @@
             method: 'post',
             headers: {
               'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + document.getElementById('bearer-input').value,
             },
             body: JSON.stringify({
               paymentKey: data.paymentKey,
