@@ -1,5 +1,6 @@
 package com.example.toss.service;
 
+import com.example.toss.dto.PaymentCancelDto;
 import com.example.toss.dto.PaymentConfirmDto;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,5 +17,13 @@ public interface TossHttpService {
     Object getPayment(
             @PathVariable("paymentKey")
             String paymentKey
+    );
+
+    @PostExchange("/{paymentKey}/cancel")
+    Object cancelPayment(
+            @PathVariable("paymentKey")
+            String paymentKey,
+            @RequestBody
+            PaymentCancelDto dto
     );
 }

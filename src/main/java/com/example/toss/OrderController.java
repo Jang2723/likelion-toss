@@ -1,12 +1,10 @@
 package com.example.toss;
 
 import com.example.toss.dto.ItemOrderDto;
+import com.example.toss.dto.PaymentCancelDto;
 import com.example.toss.service.OrderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,5 +33,15 @@ public class OrderController {
             Long id
     ){
         return service.readTossPayment(id);
+    }
+
+    @PostMapping("{id}/cancel")
+    public Object cancelPayment(
+            @PathVariable("id")
+            Long id,
+            @RequestBody
+            PaymentCancelDto dto
+    ) {
+        return service.cancelPayment(id, dto);
     }
 }
